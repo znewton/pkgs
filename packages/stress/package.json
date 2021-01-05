@@ -1,0 +1,38 @@
+{
+  "name": "@znewton/stress",
+  "version": "0.0.1",
+  "description": "Simple stress testing",
+  "main": "dist/index.js",
+  "bin": {
+    "zstress": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "mocha --recursive dist/test -r make-promises-safe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znewton/pkgs.git"
+  },
+  "author": "znewton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/znewton/pkgs/issues"
+  },
+  "homepage": "https://github.com/znewton/pkgs#readme",
+  "dependencies": {
+    "@znewton/utils": "^0.0.1",
+    "axios": "^0.21.1",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.20",
+    "@types/yargs": "^15.0.12",
+    "@znewton/common": "^0.0.1",
+    "axios-mock-adapter": "^1.19.0"
+  },
+  "prettier": "@znewton/common/prettier-config.json"
+}

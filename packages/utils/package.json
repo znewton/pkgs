@@ -1,0 +1,28 @@
+{
+  "name": "@znewton/utils",
+  "version": "0.0.1",
+  "description": "Some helpers",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "mocha --recursive dist/test -r make-promises-safe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znewton/pkgs.git"
+  },
+  "author": "znewton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/znewton/pkgs/issues"
+  },
+  "homepage": "https://github.com/znewton/pkgs#readme",
+  "devDependencies": {
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.20",
+    "@znewton/common": "^0.0.1"
+  },
+  "prettier": "@znewton/common/prettier-config.json"
+}

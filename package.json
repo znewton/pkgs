@@ -1,0 +1,25 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --no-sort --stream",
+    "lint:fix": "lerna run lint:fix --no-sort --stream",
+    "postinstall": "lerna bootstrap --hoist",
+    "test": "lerna run test --stream --no-bail --no-sort"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.20",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "lerna": "^3.22.1",
+    "make-promises-safe": "^5.1.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+  }
+}
