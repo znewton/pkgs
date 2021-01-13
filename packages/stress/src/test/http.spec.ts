@@ -1,11 +1,11 @@
 import assert from "assert";
 import Axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { sendMany } from "../sendMany";
+import { sendMany } from "../http";
 
 const mockAxios = new AxiosMockAdapter(Axios);
 
-describe("sendMany()", () => {
+describe("http.sendMany()", () => {
     beforeEach(() => {
         mockAxios.reset();
     });

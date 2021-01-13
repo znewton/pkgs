@@ -1,12 +1,13 @@
 import Axios from "axios";
 import { stagger } from "@znewton/utils";
+import { ICommandResult } from "./commandHandler";
 
 export async function sendMany(
     url: string,
     numRequests: number,
     delayInMs = 0,
     verbose = false
-): Promise<{ successCodes: number[]; failureCodes: number[] }> {
+): Promise<ICommandResult> {
     const successCodes: number[] = [];
     const failureCodes: number[] = [];
     const requestPromises: Promise<void>[] = [];
@@ -16,6 +17,7 @@ export async function sendMany(
                 (response) => {
                     if (verbose) {
                         console.log(`🟢 ${response.status} ${response.statusText}`);
+                        console.log(response.data);
                     }
                     successCodes.push(response.status);
                 },

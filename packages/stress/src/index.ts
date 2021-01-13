@@ -1,29 +1,21 @@
 import yargs from "yargs";
-import { sendMany } from "./sendMany";
+import { commandHandler } from "./commandHandler";
+import * as http from "./http";
 
-const args = yargs.options({
-    url: { type: "string", alias: "u", demandOption: true },
-    numRequests: { type: "number", alias: "n", demandOption: false, default: 1 },
-    delayInMs: { type: "number", alias: "d", demandOption: false, default: 0 },
-    verbose: { type: "boolean", alias: "v", demandOption: false, default: false },
-}).argv;
-
-async function main() {
-    const timerStart = Date.now();
-    const { successCodes, failureCodes } = await sendMany(args.url, args.numRequests, args.delayInMs, args.verbose);
-    const timerEnd = Date.now();
-
-    return {
-        successes: {
-            count: successCodes.length,
-            codes: successCodes,
+yargs
+    .command(
+        "http",
+        "stress test an http endpoint",
+        {
+            url: { type: "string", alias: "u", demandOption: true },
+            numRequests: { type: "number", alias: "n", demandOption: false, default: 1 },
+            delayInMs: { type: "number", alias: "d", demandOption: false, default: 0 },
+            verbose: { type: "boolean", alias: "v", demandOption: false, default: false },
         },
-        failures: {
-            count: failureCodes.length,
-            codes: failureCodes,
-        },
-        duration: timerEnd - timerStart,
-    };
-}
-
-main().then(console.log).catch(console.error);
+        (argv) => {
+            commandHandler(async () => http.sendMany(argv.url, argv.numRequests, argv.delayInMs, argv.verbose))
+                .then(console.log)
+                .catch(console.error);
+        }
+    )
+    .help().argv;
