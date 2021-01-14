@@ -1,12 +1,15 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "lerna run build --stream",
-    "lint": "lerna run lint --no-sort --stream",
-    "lint:fix": "lerna run lint:fix --no-sort --stream",
-    "postinstall": "lerna bootstrap --hoist",
-    "test": "lerna run test --stream --no-bail --no-sort"
+    "build": "lage build",
+    "clean": "lage clean",
+    "lint": "lage lint",
+    "lint:fix": "lage lint:fix",
+    "test": "lage test"
   },
   "devDependencies": {
     "@types/mocha": "^8.2.0",
@@ -16,10 +19,11 @@
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "lerna": "^3.22.1",
+    "lage": "^0.27.0",
     "make-promises-safe": "^5.1.0",
     "mocha": "^8.2.1",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.3"
   }
 }

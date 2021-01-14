@@ -10,7 +10,8 @@
     "build": "tsc",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "test": "mocha --recursive dist/test -r make-promises-safe"
+    "test": "mocha --recursive dist/test -r make-promises-safe",
+    "clean": "rimraf dist *.tsbuildinfo"
   },
   "repository": {
     "type": "git",

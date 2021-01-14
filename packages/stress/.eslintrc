@@ -1,5 +1,5 @@
 {
     "extends": [
-        "./node_modules/@znewton/common/eslint-config.js"
+        "../../node_modules/@znewton/common/eslint-config.js"
     ]
 }

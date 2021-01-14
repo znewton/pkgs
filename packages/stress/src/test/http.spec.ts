@@ -27,7 +27,7 @@ describe("http.sendMany()", () => {
         const { successCodes, failureCodes } = await sendMany(url, count);
         assert.strictEqual(successCodes.length, 0);
         assert.strictEqual(failureCodes.length, count);
-        successCodes.forEach((code) => {
+        failureCodes.forEach((code) => {
             assert.strictEqual(code, 429);
         });
     });

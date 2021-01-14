@@ -7,6 +7,6 @@ This is a collection of small/experimental TypeScript projects that don't need t
 Install dependencies and build local packages
 
 ```shell
-npm i
-npm run build
+yarn
+yarn build
 ```
