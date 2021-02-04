@@ -3,6 +3,6 @@ dist
 *.tsbuildinfo
 
 **/.yarn/*
-**/!.yarn/releases
-**/!.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/plugins
 **/.pnp.*

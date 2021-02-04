@@ -1,17 +1,10 @@
 {
   "name": "@znewton/stress",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple stress testing",
   "main": "dist/index.js",
   "bin": {
     "zstress": "./dist/index.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "test": "mocha --recursive dist/test -r make-promises-safe",
-    "clean": "rimraf dist *.tsbuildinfo"
   },
   "repository": {
     "type": "git",
@@ -22,9 +15,16 @@
   "bugs": {
     "url": "https://github.com/znewton/pkgs/issues"
   },
-  "homepage": "https://github.com/znewton/pkgs#readme",
+  "homepage": "https://github.com/znewton/pkgs/packages/stress#readme",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist *.tsbuildinfo",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "mocha --recursive dist/test -r make-promises-safe"
+  },
   "dependencies": {
-    "@znewton/utils": "^0.0.1",
+    "@znewton/utils": "^0.0.2",
     "axios": "^0.21.1",
     "ws": "^7.4.2",
     "yargs": "^16.2.0"
@@ -34,7 +34,7 @@
     "@types/node": "^14.14.20",
     "@types/ws": "^7.4.0",
     "@types/yargs": "^15.0.12",
-    "@znewton/common": "^0.0.1",
+    "@znewton/common": "^0.0.2",
     "axios-mock-adapter": "^1.19.0"
   },
   "prettier": "@znewton/common/prettier-config.json"

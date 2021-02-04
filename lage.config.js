@@ -5,5 +5,6 @@ module.exports = {
     test: ["^build"],
     lint: ["^build"],
     "lint:fix": ["build"],
+    publish: ["^build", "build", "test", "lint"],
   },
 };

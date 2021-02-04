@@ -1,7 +1,7 @@
 {
   "name": "@znewton/common",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Shared configs and such",
   "repository": {
     "type": "git",
@@ -12,5 +12,5 @@
   "bugs": {
     "url": "https://github.com/znewton/pkgs/issues"
   },
-  "homepage": "https://github.com/znewton/pkgs#readme"
+  "homepage": "https://github.com/znewton/pkgs/packages/common#readme"
 }

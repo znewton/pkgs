@@ -1,0 +1,76 @@
+{
+    "name": "@znewton/fluid-app",
+    "private": true,
+    "version": "0.0.2",
+    "description": "Simple fluid app for testing",
+    "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/znewton/pkgs.git"
+    },
+    "author": "znewton",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/znewton/pkgs/issues"
+    },
+    "homepage": "https://github.com/znewton/pkgs/packages/fluid-app#readme",
+    "scripts": {
+        "build": "concurrently yarn:tsc yarn:webpack",
+        "clean": "rimraf dist *.tsbuildinfo",
+        "lint": "eslint src",
+        "lint:fix": "eslint src --fix",
+        "start": "webpack-dev-server --config webpack.config.js --package package.json",
+        "test": "# mocha --recursive dist/test -r make-promises-safe",
+        "tsc": "tsc",
+        "webpack": "webpack --env.production",
+        "webpack:dev": "webpack --env.development"
+    },
+    "dependencies": {
+        "@fluidframework/aqueduct": "^0.33.2",
+        "@fluidframework/container-definitions": "^0.33.2",
+        "@fluidframework/container-loader": "^0.33.2",
+        "@fluidframework/core-interfaces": "^0.33.2",
+        "@fluidframework/protocol-definitions": "^0.1019.0-14328",
+        "@fluidframework/react-inputs": "^0.33.2",
+        "@fluidframework/routerlicious-driver": "^0.33.2",
+        "@fluidframework/sequence": "^0.33.2",
+        "@fluidframework/view-interfaces": "^0.33.2",
+        "jsrsasign": "^10.1.5",
+        "nconf": "^0.11.0",
+        "react": "^16.10.2",
+        "react-dom": "^16.10.2",
+        "sillyname": "0.1.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/jsrsasign": "^8.0.9",
+        "@types/mocha": "^8.2.0",
+        "@types/nconf": "0.0.37",
+        "@types/node": "^14.14.20",
+        "@types/react": "^16.9.15",
+        "@types/react-dom": "^16.9.4",
+        "@types/ws": "^7.4.0",
+        "@types/yargs": "^15.0.12",
+        "@znewton/common": "^0.0.2",
+        "clean-webpack-plugin": "3.0.0",
+        "concurrently": "5.3.0",
+        "eslint-plugin-react": "~7.22.0",
+        "html-webpack-plugin": "^4.5.0",
+        "ts-loader": "^6.1.2",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.8.0",
+        "webpack-merge": "^4.1.4"
+    },
+    "fluid": {
+        "browser": {
+            "umd": {
+                "files": [
+                    "dist/main.bundle.js"
+                ],
+                "library": "main"
+            }
+        }
+    },
+    "prettier": "@znewton/common/prettier-config.json"
+}
