@@ -31,6 +31,7 @@ async function start() {
         appConfig.tenantSecret,
         appConfig.fluidUrls.orderer,
         appConfig.fluidUrls.storage,
+        appConfig.telemetryUrl
     );
 
     // Get the Default Object from the Container
@@ -38,7 +39,6 @@ async function start() {
 
     // For now we will just reach into the FluidObject to render it
     const contentDiv = document.getElementById("content");
-    // eslint-disable-next-line no-null/no-null
     if (contentDiv !== null) {
         defaultObject.render(contentDiv);
     }

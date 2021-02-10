@@ -6,10 +6,10 @@ interface IFluidAppViewProps {
     text: SharedString;
 }
 
-export const FluidAppView = (props: IFluidAppViewProps) => {
+export const FluidAppView: React.FunctionComponent<IFluidAppViewProps> = (props: IFluidAppViewProps) => {
     return (
         <div className="fluid-app">
             <CollaborativeInput sharedString={props.text} />
         </div>
     );
-}
+};

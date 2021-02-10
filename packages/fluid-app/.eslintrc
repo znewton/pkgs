@@ -1,18 +1,24 @@
 {
     "extends": [
-        "@znewton/common/eslint-config.js",
+        "../../node_modules/@znewton/common/eslint-config.js",
         "plugin:react/recommended"
     ],
-    "env": {
+        "env": {
         "es6": true,
-        "browser": true
+            "browser": true
     },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
-        }
+        },
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react"
-    ]
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
 }
