@@ -31,7 +31,8 @@ async function start() {
         appConfig.tenantSecret,
         appConfig.fluidUrls.orderer,
         appConfig.fluidUrls.storage,
-        appConfig.telemetryUrl
+        appConfig.telemetry.endpoint,
+        appConfig.telemetry.batchLimit
     );
 
     // Get the Default Object from the Container

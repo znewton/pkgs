@@ -5,5 +5,8 @@ export default {
         orderer: "http://localhost:3003",
         storage: "http://localhost:3001",
     },
-    telemetryUrl: "",
+    telemetry: {
+        endpoint: "",
+        batchLimit: 100,
+    },
 };
