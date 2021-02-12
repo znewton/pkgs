@@ -1,4 +1,4 @@
-import { ConsoleLogger, ILoggerSettings, IConsoleLoggerSettings } from "../logger";
+import { ConsoleLogger, ILoggerSettings, IConsoleLoggerSettings, IMongoLoggerSettings, MongoLogger } from "../loggers";
 
 export default {
     loggers: [
@@ -6,5 +6,12 @@ export default {
             enabled: false,
             name: ConsoleLogger.name,
         } as IConsoleLoggerSettings,
+        {
+            enabled: false,
+            name: MongoLogger.name,
+            connectionString: "",
+            dbName: "",
+            collectionName: "",
+        } as IMongoLoggerSettings,
     ] as ILoggerSettings[],
 };

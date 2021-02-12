@@ -1,14 +1,23 @@
 import { ITelemetryBaseEvent, ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 import stringifySafe from "json-stringify-safe";
 
-interface IStampedTelemetryEvent extends ITelemetryBaseEvent {
+interface ITelemetryEvent extends ITelemetryBaseEvent {
+    tenantId: string;
+    serviceName: string;
+    appName: string;
     timestamp: number;
 }
 
 export class FluidTelemetryLogger implements ITelemetryBaseLogger {
-    private readonly pendingEvents: IStampedTelemetryEvent[] = [];
+    private readonly pendingEvents: ITelemetryEvent[] = [];
 
-    constructor(private readonly telemetryUrl: string, private readonly batchLimit = 1) {
+    constructor(
+        private readonly telemetryUrl: string,
+        private readonly tenantId: string,
+        private readonly appName: string,
+        private readonly serviceName: string,
+        private readonly batchLimit = 1
+    ) {
         window.addEventListener("beforeunload", () => {
             this.sendPending();
         });
@@ -17,6 +26,9 @@ export class FluidTelemetryLogger implements ITelemetryBaseLogger {
     public send(event: ITelemetryBaseEvent): void {
         this.pendingEvents.push({
             ...event,
+            tenantId: this.tenantId,
+            serviceName: this.serviceName,
+            appName: this.appName,
             timestamp: Date.now(),
         });
         if (this.pendingEvents.length >= this.batchLimit) {

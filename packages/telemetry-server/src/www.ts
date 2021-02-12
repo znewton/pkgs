@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import config from "./config/config";
-import { MultiLogger } from "./logger";
+import { MultiLogger } from "./loggers";
 
 const create = async (): Promise<express.Application> => {
     const app = express();
@@ -23,11 +23,9 @@ const create = async (): Promise<express.Application> => {
         }
         let logP;
         if (logBody instanceof Array) {
-            const multiLogP: Promise<void>[] = [];
-            logBody.forEach((logValue) => multiLogP.push(multiLogger.log(logValue).catch(console.error)));
-            logP = Promise.all(multiLogP);
+            logP = multiLogger.logMany(logBody);
         } else {
-            logP = multiLogger.log(logBody).catch(console.error);
+            logP = multiLogger.log(logBody);
         }
         logP.then(() => res.sendStatus(200)).catch(() => res.sendStatus(500));
     });

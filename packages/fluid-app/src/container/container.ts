@@ -6,7 +6,7 @@ import { RouterliciousDocumentServiceFactory } from "@fluidframework/routerlicio
 import { FluidApp } from "../fluid-object";
 import { InsecureRouterliciousTokenProvider } from "./tokenProvider";
 import { InsecureRouterliciousUrlResolver } from "./urlResolver";
-import { FluidTelemetryLogger } from "./telemetryLogger";
+import { ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 
 export const FluidAppContainerRuntimeFactory = new ContainerRuntimeFactoryWithDefaultDataStore(FluidApp.getFactory(), [
     [FluidApp.Name, Promise.resolve(FluidApp.getFactory())],
@@ -15,13 +15,12 @@ export const FluidAppContainerRuntimeFactory = new ContainerRuntimeFactoryWithDe
 export async function getR11sContainer(
     documentId: string,
     containerRuntimeFactory: IRuntimeFactory,
+    logger: ITelemetryBaseLogger,
     createNew: boolean,
     tenantId: string,
     tenantSecret: string,
     ordererUrl: string,
-    storageUrl: string,
-    telemetryUrl: string,
-    telemetryBatchLimit: number
+    storageUrl: string
 ): Promise<Container> {
     const module = { fluidExport: containerRuntimeFactory };
     const codeLoader = { load: async () => module };
@@ -35,7 +34,6 @@ export async function getR11sContainer(
         ordererUrl,
         storageUrl
     );
-    const logger = new FluidTelemetryLogger(telemetryUrl, telemetryBatchLimit);
 
     const loader = new Loader({
         urlResolver,

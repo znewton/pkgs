@@ -2,7 +2,7 @@ import { getDefaultObjectFromContainer } from "@fluidframework/aqueduct";
 import sillyname from "sillyname";
 
 import { FluidApp } from "./fluid-object";
-import { FluidAppContainerRuntimeFactory, getR11sContainer } from "./container";
+import { FluidAppContainerRuntimeFactory, FluidTelemetryLogger, getR11sContainer } from "./container";
 import appConfig from "./config/config";
 
 // Re-export everything
@@ -22,17 +22,23 @@ const documentId = window.location.hash.substring(1);
  * requires making async calls.
  */
 async function start() {
+    const logger = new FluidTelemetryLogger(
+        appConfig.telemetry.endpoint,
+        appConfig.tenantId,
+        FluidApp.Name,
+        appConfig.telemetry.serviceName,
+        appConfig.telemetry.batchLimit
+    );
     // Get the Fluid Container associated with the provided id
     const container = await getR11sContainer(
         documentId,
         FluidAppContainerRuntimeFactory,
+        logger,
         createNew,
         appConfig.tenantId,
         appConfig.tenantSecret,
         appConfig.fluidUrls.orderer,
-        appConfig.fluidUrls.storage,
-        appConfig.telemetry.endpoint,
-        appConfig.telemetry.batchLimit
+        appConfig.fluidUrls.storage
     );
 
     // Get the Default Object from the Container

@@ -908,6 +908,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bson@npm:*":
+  version: 4.0.3
+  resolution: "@types/bson@npm:4.0.3"
+  dependencies:
+    "@types/node": "*"
+  checksum: 73c0179851f02bd43f010db65c465b09f7c495b35b0e3820a79d36f4bb209c84a512121c1af4c1d2512e5f13cd27cc74fa8aa6f3df9b17b7cca9d37d59ece3ce
+  languageName: node
+  linkType: hard
+
 "@types/connect@npm:*":
   version: 3.4.34
   resolution: "@types/connect@npm:3.4.34"
@@ -1035,6 +1044,16 @@ __metadata:
   version: 8.2.0
   resolution: "@types/mocha@npm:8.2.0"
   checksum: 87a6cc62fa8bb4c0d3c9447c7aa316b600435fa969822e5a786abc9df78e4143f71906480684dbf9ae7b8b8849dfda4783828c47e5415d370371db84225a05ff
+  languageName: node
+  linkType: hard
+
+"@types/mongodb@npm:^3":
+  version: 3.6.7
+  resolution: "@types/mongodb@npm:3.6.7"
+  dependencies:
+    "@types/bson": "*"
+    "@types/node": "*"
+  checksum: 9a334a2528455869d7c3af3bd73ebce6647ce372effea9ce91905911e93e36ffc760a60e6779508d49dafa8b75e22bdd9a72fe8d03efc9650f1c652afc59178d
   languageName: node
   linkType: hard
 
@@ -1636,9 +1655,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@znewton/telemtry-server@workspace:packages/telemetry-server":
+"@znewton/telemetry-server@workspace:packages/telemetry-server":
   version: 0.0.0-use.local
-  resolution: "@znewton/telemtry-server@workspace:packages/telemetry-server"
+  resolution: "@znewton/telemetry-server@workspace:packages/telemetry-server"
   dependencies:
     "@types/body-parser": ^1
     "@types/cookie-parser": ^1
@@ -1646,6 +1665,7 @@ __metadata:
     "@types/express": ^4.17.11
     "@types/json-stringify-safe": ^5
     "@types/mocha": ^8.2.0
+    "@types/mongodb": ^3
     "@types/node": ^14.14.20
     "@typescript-eslint/eslint-plugin": ^4.12.0
     "@typescript-eslint/parser": ^4.12.0
@@ -1660,6 +1680,7 @@ __metadata:
     eslint-plugin-prettier: ^3.3.1
     express: ^4.17.1
     json-stringify-safe: ^5.0.1
+    mongodb: ^3.6.4
     nodemon: ^2.0.7
     prettier: ^2.2.1
     typescript: ^4.1.3
@@ -2402,6 +2423,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bl@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "bl@npm:2.2.1"
+  dependencies:
+    readable-stream: ^2.3.5
+    safe-buffer: ^5.1.1
+  checksum: 438c510aa211ec4398819ad1cb4ef1617b0ffeb0f1946c2b359fc5aefbe6f8e22dc2f6788e8746509779fabee89f1c3b34ec87ff30fb7b3d95654d8cd51e3b70
+  languageName: node
+  linkType: hard
+
 "bl@npm:^4.0.3":
   version: 4.0.3
   resolution: "bl@npm:4.0.3"
@@ -2627,6 +2658,13 @@ __metadata:
   dependencies:
     pako: ~1.0.5
   checksum: 877c864e68a3f1dc9355eea71ee84c894c40f906f737bdf1e5d98d3641182099208e757356b5906160f0b2b22fa4976c4534ac1782bbdd39823b605ae2210f9a
+  languageName: node
+  linkType: hard
+
+"bson@npm:^1.1.4":
+  version: 1.1.5
+  resolution: "bson@npm:1.1.5"
+  checksum: d1e6fe96baac02dacc54cc33f8accce7bd289a22f0e98804e76adbb9af463ee414f6c8aed15fa18c133330fe859a7bb750e432f39549bd823bc73c5e6dc8e1e4
   languageName: node
   linkType: hard
 
@@ -3640,6 +3678,13 @@ __metadata:
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
   checksum: 7459e34d29cadd9bfd340728bfcc70ea96da5d940fb197298b523f805822680e583cba3ec34d36a18004325f1ec9de55e202a92b414d01db18cd87bb8a2ae5bd
+  languageName: node
+  linkType: hard
+
+"denque@npm:^1.4.1":
+  version: 1.5.0
+  resolution: "denque@npm:1.5.0"
+  checksum: 3564778cda60c7dee3f1d71e397e50e6b39a8c06118aab9843b9396cb621b3191ab56d13de5237b8beee2b87bec485e8239c58ca3133472d2d1eaa3d2d518022
   languageName: node
   linkType: hard
 
@@ -6873,6 +6918,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"memory-pager@npm:^1.0.2":
+  version: 1.5.0
+  resolution: "memory-pager@npm:1.5.0"
+  checksum: 6812af8165a31e729df25af125ba91b7ea7f3cacaf73a1c139b755be640cab9dfa4bb05b9acfc5d5f1f540b334203f26dac0662576033dd351e0a798abc4d72a
+  languageName: node
+  linkType: hard
+
 "memory-streams@npm:^0.1.3":
   version: 0.1.3
   resolution: "memory-streams@npm:0.1.3"
@@ -7138,6 +7190,36 @@ fsevents@~2.3.1:
     _mocha: bin/_mocha
     mocha: bin/mocha
   checksum: e42b2bc46ead7c0fbdca41fa017dc8618625c847cc48ba464c4b9a0c52ae90cdf8ca00ddac3ba6031caf7c66f39fb98f675015ac68644466e6b98b73e6e648e4
+  languageName: node
+  linkType: hard
+
+"mongodb@npm:^3.6.4":
+  version: 3.6.4
+  resolution: "mongodb@npm:3.6.4"
+  dependencies:
+    bl: ^2.2.1
+    bson: ^1.1.4
+    denque: ^1.4.1
+    require_optional: ^1.0.1
+    safe-buffer: ^5.1.2
+    saslprep: ^1.0.0
+  dependenciesMeta:
+    saslprep:
+      optional: true
+  peerDependenciesMeta:
+    aws4:
+      optional: true
+    bson-ext:
+      optional: true
+    kerberos:
+      optional: true
+    mongodb-client-encryption:
+      optional: true
+    mongodb-extjson:
+      optional: true
+    snappy:
+      optional: true
+  checksum: f2331e7cdce7694b033346f898af9429bab53505ffc1175cb66e370eecc26eb3ae08d950f57ee6ca0be1a4d24f735c40ac758f3e8f0f68826b43e7a36ed5f5bf
   languageName: node
   linkType: hard
 
@@ -8603,7 +8685,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:1 || 2, readable-stream@npm:^2.0.0, readable-stream@npm:^2.0.1, readable-stream@npm:^2.0.2, readable-stream@npm:^2.0.6, readable-stream@npm:^2.1.5, readable-stream@npm:^2.2.2, readable-stream@npm:^2.3.3, readable-stream@npm:^2.3.6, readable-stream@npm:~2.3.6":
+"readable-stream@npm:1 || 2, readable-stream@npm:^2.0.0, readable-stream@npm:^2.0.1, readable-stream@npm:^2.0.2, readable-stream@npm:^2.0.6, readable-stream@npm:^2.1.5, readable-stream@npm:^2.2.2, readable-stream@npm:^2.3.3, readable-stream@npm:^2.3.5, readable-stream@npm:^2.3.6, readable-stream@npm:~2.3.6":
   version: 2.3.7
   resolution: "readable-stream@npm:2.3.7"
   dependencies:
@@ -8796,6 +8878,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"require_optional@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "require_optional@npm:1.0.1"
+  dependencies:
+    resolve-from: ^2.0.0
+    semver: ^5.1.0
+  checksum: 2a7cae14fcb0f7aac9e1837bde2edc1e95b2cf635376df09e973151ea735b77f2069e6bf9e1a1c5dd27f052e0b00a477db15807302a1ceeb487307ea61416bee
+  languageName: node
+  linkType: hard
+
 "requires-port@npm:^1.0.0":
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
@@ -8819,6 +8911,13 @@ fsevents@~2.3.1:
     expand-tilde: ^2.0.0
     global-modules: ^1.0.0
   checksum: b07a0070083d04f6c3b50fe7b986514978eba5ab957b49cf2637b2e8ce69d81e063523d60360145a7e8b03ea878c68fb491da86fb18601458eaef640ae40fdf5
+  languageName: node
+  linkType: hard
+
+"resolve-from@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "resolve-from@npm:2.0.0"
+  checksum: e2cfa9d4402ceb731ce14f639248c8a8a364db8710ba3360a4492046c6688084235645a4f4004ac7d9acf40bc0644fac6d8c24f9012c7e5773234a7c09d57cb4
   languageName: node
   linkType: hard
 
@@ -9019,6 +9118,15 @@ resolve@~1.17.0:
   languageName: node
   linkType: hard
 
+"saslprep@npm:^1.0.0":
+  version: 1.0.3
+  resolution: "saslprep@npm:1.0.3"
+  dependencies:
+    sparse-bitfield: ^3.0.3
+  checksum: d007f50fe6578814d7b6c06f528cf7b08f1e12292b1c7d671a29a7a709cec29527d85352d1de3e020b3ee30017a9abd58252ff27b5042b889acd4a67b089c38c
+  languageName: node
+  linkType: hard
+
 "sax@npm:>=0.6.0":
   version: 1.2.4
   resolution: "sax@npm:1.2.4"
@@ -9079,7 +9187,7 @@ resolve@~1.17.0:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.1.0, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -9458,6 +9566,15 @@ resolve@~1.17.0:
   version: 0.7.3
   resolution: "source-map@npm:0.7.3"
   checksum: 351ce26ffa1ebf203660c0d70d7566c81e65d2d994d1c2d94da140808e02da34961673ce12ecea9b40797b96fbeb8c70bf71a4ad9f779f1a4fdbba75530bb386
+  languageName: node
+  linkType: hard
+
+"sparse-bitfield@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "sparse-bitfield@npm:3.0.3"
+  dependencies:
+    memory-pager: ^1.0.2
+  checksum: 3d7ea483df832df45c1a9b4905b2e2ffb9107b6b43db664ffaf03371000f9ec0db664c8d94600443e344c91be36c52a299ba627f2d15c7f2bcd2c2b7ded6f3b0
   languageName: node
   linkType: hard
 
