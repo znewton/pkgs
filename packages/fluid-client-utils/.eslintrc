@@ -1,0 +1,8 @@
+{
+    "extends": [
+        "../../node_modules/@znewton/common/eslint-config.js"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    }
+}

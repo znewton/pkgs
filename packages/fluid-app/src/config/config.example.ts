@@ -1,4 +1,4 @@
-import { IAppConfig } from "../app";
+import { IAppConfig } from "./types";
 
 const example: IAppConfig = {
     fluidService: {

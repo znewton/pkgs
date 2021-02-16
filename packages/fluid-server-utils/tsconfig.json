@@ -1,0 +1,15 @@
+{
+    "extends": "@znewton/common/ts-config.json",
+    "exclude": [
+        "dist",
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"]
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
