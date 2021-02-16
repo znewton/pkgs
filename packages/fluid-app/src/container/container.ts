@@ -8,31 +8,35 @@ import { InsecureRouterliciousTokenProvider } from "./tokenProvider";
 import { InsecureRouterliciousUrlResolver } from "./urlResolver";
 import { ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 
+export interface IFluidServiceConfig {
+    tenantId: string;
+    tenantSecret: string;
+    ordererUrl: string;
+    storageUrl: string;
+}
+
 export const FluidAppContainerRuntimeFactory = new ContainerRuntimeFactoryWithDefaultDataStore(FluidApp.getFactory(), [
     [FluidApp.Name, Promise.resolve(FluidApp.getFactory())],
 ]);
 
-export async function getR11sContainer(
+export async function getFluidContainer(
     documentId: string,
     containerRuntimeFactory: IRuntimeFactory,
     logger: ITelemetryBaseLogger,
     createNew: boolean,
-    tenantId: string,
-    tenantSecret: string,
-    ordererUrl: string,
-    storageUrl: string
+    config: IFluidServiceConfig
 ): Promise<Container> {
     const module = { fluidExport: containerRuntimeFactory };
     const codeLoader = { load: async () => module };
 
-    const tokenProvider = new InsecureRouterliciousTokenProvider(tenantSecret);
+    const tokenProvider = new InsecureRouterliciousTokenProvider(config.tenantSecret);
     const documentServiceFactory = new RouterliciousDocumentServiceFactory(tokenProvider);
     const urlResolver = new InsecureRouterliciousUrlResolver(
         tokenProvider,
-        tenantId,
+        config.tenantId,
         documentId,
-        ordererUrl,
-        storageUrl
+        config.ordererUrl,
+        config.storageUrl
     );
 
     const loader = new Loader({

@@ -1,44 +1,35 @@
 import { getDefaultObjectFromContainer } from "@fluidframework/aqueduct";
-import sillyname from "sillyname";
 
 import { FluidApp } from "./fluid-object";
-import { FluidAppContainerRuntimeFactory, FluidTelemetryLogger, getR11sContainer } from "./container";
-import appConfig from "./config/config";
+import {
+    FluidAppContainerRuntimeFactory,
+    FluidTelemetryLogger,
+    getFluidContainer,
+    IFluidServiceConfig,
+    ITelemetryServiceConfig,
+} from "./container";
 
 // Re-export everything
 export { FluidApp, FluidAppContainerRuntimeFactory };
 
-// Since this is a single page Fluid application we are generating a new document id
-// if one was not provided
-let createNew = false;
-if (window.location.hash.length === 0) {
-    createNew = true;
-    window.location.hash = (sillyname() as string).toLowerCase().split(" ").join("");
+export interface IAppConfig {
+    fluidService: IFluidServiceConfig;
+    telemetryService: ITelemetryServiceConfig;
 }
-const documentId = window.location.hash.substring(1);
 
 /**
  * This is a helper function for loading the page. It's required because getting the Fluid Container
  * requires making async calls.
  */
-async function start() {
-    const logger = new FluidTelemetryLogger(
-        appConfig.telemetry.endpoint,
-        appConfig.tenantId,
-        FluidApp.Name,
-        appConfig.telemetry.serviceName,
-        appConfig.telemetry.batchLimit
-    );
+export async function start(createNew: boolean, documentId: string, config: IAppConfig): Promise<void> {
+    const logger = new FluidTelemetryLogger(config.fluidService.tenantId, FluidApp.Name, config.telemetryService);
     // Get the Fluid Container associated with the provided id
-    const container = await getR11sContainer(
+    const container = await getFluidContainer(
         documentId,
         FluidAppContainerRuntimeFactory,
         logger,
         createNew,
-        appConfig.tenantId,
-        appConfig.tenantSecret,
-        appConfig.fluidUrls.orderer,
-        appConfig.fluidUrls.storage
+        config.fluidService
     );
 
     // Get the Default Object from the Container
@@ -50,7 +41,3 @@ async function start() {
         defaultObject.render(contentDiv);
     }
 }
-
-start().catch((e) => {
-    console.error(e);
-});

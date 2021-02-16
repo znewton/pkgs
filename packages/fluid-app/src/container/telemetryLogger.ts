@@ -1,6 +1,13 @@
 import { ITelemetryBaseEvent, ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 import stringifySafe from "json-stringify-safe";
 
+export interface ITelemetryServiceConfig {
+    endpoint: string;
+    serviceName: string;
+    batchLimit?: number;
+    maxLogIntervalInMs?: number;
+}
+
 interface ITelemetryEvent extends ITelemetryBaseEvent {
     tenantId: string;
     serviceName: string;
@@ -9,15 +16,20 @@ interface ITelemetryEvent extends ITelemetryBaseEvent {
 }
 
 export class FluidTelemetryLogger implements ITelemetryBaseLogger {
-    private readonly pendingEvents: ITelemetryEvent[] = [];
+    private readonly endpoint: string;
+    private readonly serviceName: string;
+    private readonly batchLimit: number;
+    private readonly maxLogIntervalInMs: number;
 
-    constructor(
-        private readonly telemetryUrl: string,
-        private readonly tenantId: string,
-        private readonly appName: string,
-        private readonly serviceName: string,
-        private readonly batchLimit = 1
-    ) {
+    private readonly pendingEvents: ITelemetryEvent[] = [];
+    private lastLogsSentAt: number = Date.now();
+
+    constructor(private readonly tenantId: string, private readonly appName: string, config: ITelemetryServiceConfig) {
+        this.endpoint = config.endpoint;
+        this.serviceName = config.serviceName;
+        this.batchLimit = config.batchLimit ?? 1;
+        this.maxLogIntervalInMs = config.maxLogIntervalInMs ?? 1000000;
+
         window.addEventListener("beforeunload", () => {
             this.sendPending();
         });
@@ -31,19 +43,23 @@ export class FluidTelemetryLogger implements ITelemetryBaseLogger {
             appName: this.appName,
             timestamp: Date.now(),
         });
-        if (this.pendingEvents.length >= this.batchLimit) {
+        if (
+            this.pendingEvents.length >= this.batchLimit ||
+            Date.now() - this.lastLogsSentAt > this.maxLogIntervalInMs
+        ) {
             void this.sendPending();
         }
     }
 
     private async sendPending(): Promise<any> {
-        if (!this.pendingEvents.length || !this.telemetryUrl) {
+        if (!this.pendingEvents.length || !this.endpoint) {
             return;
         }
 
+        this.lastLogsSentAt = Date.now();
         // retrieve and clear pending events
         const events = this.pendingEvents.splice(0, this.pendingEvents.length);
-        return fetch(this.telemetryUrl, {
+        return fetch(this.endpoint, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -57,6 +73,8 @@ export class FluidTelemetryLogger implements ITelemetryBaseLogger {
             })
             .catch((error) => {
                 console.error(error);
+                // put events back in pending if call fails
+                this.pendingEvents.push(...events);
             });
     }
 }

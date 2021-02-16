@@ -11,7 +11,8 @@ export default {
             name: MongoLogger.name,
             connectionString: "",
             dbName: "",
-            collectionName: "",
+            collectionNamePrefix: "",
+            logSubsetField: "",
         } as IMongoLoggerSettings,
     ] as ILoggerSettings[],
 };

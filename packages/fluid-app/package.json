@@ -19,7 +19,7 @@
         "clean": "rimraf dist *.tsbuildinfo",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix",
-        "start": "webpack-dev-server --config webpack.config.js --package package.json",
+        "start:dev": "webpack-dev-server --config webpack.config.js --package package.json",
         "test": "# mocha --recursive dist/test -r make-promises-safe",
         "tsc": "tsc",
         "webpack": "webpack --env.production",

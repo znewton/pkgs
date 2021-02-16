@@ -49,6 +49,3 @@ export class FluidApp extends DataObject implements IFluidHTMLView {
         return div;
     }
 }
-
-// Export the CollaborativeText factory as fluidExport for the dynamic component loading scenario
-export const fluidExport = FluidApp.getFactory();

@@ -19,7 +19,7 @@ cp src/config/config.example.ts src/config/config.ts
 Start the app, then open it at http://localhost:8080, or wherever the output says it's listening:
 
 ```shell
-yarn start
+yarn start:dev
 ```
 
 If you set everything up correctly and your fluid service is working as expected, you should be able to see an editable text box.
