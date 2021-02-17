@@ -2,8 +2,8 @@ import sillyname from "sillyname";
 import { getDefaultObjectFromContainer } from "@fluidframework/aqueduct";
 import React, { useEffect } from "react";
 import { IClientConfig } from "../config";
-import ClientConfig from "../config/client.config";
 import { FluidAppView, getContainer } from "./fluid-app-view";
+import clientConfig from "../config/client.config";
 
 async function start(createNew: boolean, documentId: string, config: IClientConfig): Promise<void> {
     // Get the Fluid Container associated with the provided id
@@ -29,13 +29,23 @@ export const FluidApp: React.FunctionComponent = () => {
         // Since this is a single page Fluid application we are generating a new document id
         // if one was not provided
         let createNew = false;
-        if (window.location.hash.length === 0) {
+        let hash = window.location.hash.split("?")[0];
+        if (hash.length === 0) {
             createNew = true;
-            window.location.hash = (sillyname() as string).toLowerCase().split(" ").join("");
+            hash = (sillyname() as string).toLowerCase().split(" ").join("");
+            window.location.hash = hash;
+        } else {
+            hash = window.location.hash.substring(1);
         }
-        const documentId = window.location.hash.substring(1);
+        const documentId = hash;
 
-        start(createNew, documentId, ClientConfig).catch((e) => {
+        console.log({
+            createNew,
+            documentId,
+            clientConfig,
+        });
+
+        start(createNew, documentId, clientConfig).catch((e) => {
             console.error(e);
         });
     }, []);

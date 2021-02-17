@@ -1,9 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateToken } from "@fluidframework/server-services-utils";
 import { ScopeType } from "@fluidframework/protocol-definitions";
-import ServerConfig from "../../config/server.config";
+import defaultServerConfig, { configs as serverConfigs } from "../../config/server.config";
+import { IServerConfig } from "../../config";
 
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
+    // decide what config to use
+    let config: IServerConfig = defaultServerConfig;
+    const configParam = req.query.config as string;
+    if (configParam && serverConfigs[configParam]) {
+        config = serverConfigs[configParam];
+    }
+
     const tenantId = req.query.tenantId as string;
     const documentId = req.query.documentId as string;
     const scopes = req.query.scopes as ScopeType[];
@@ -11,11 +19,11 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
         res.status(400).send("Must provide tenantId and documentId");
         return;
     }
-    if (tenantId !== ServerConfig.tenantId) {
+    if (tenantId !== config.tenantId) {
         res.status(400).send("Invalid tenantId");
         return;
     }
-    const token = generateToken(tenantId, documentId, ServerConfig.tenantSecret, scopes || []);
+    const token = generateToken(tenantId, documentId, config.tenantSecret, scopes || []);
     res.status(200).send(token);
 };
 

@@ -30,7 +30,9 @@
     "target": "esnext",
     "alwaysStrict": true,
     "strict": true,
-    "allowJs": true
+    "allowJs": true,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
   "include": [
     "**/*.ts",
