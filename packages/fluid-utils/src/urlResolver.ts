@@ -2,7 +2,7 @@ import { IRequest } from "@fluidframework/core-interfaces";
 import { IFluidResolvedUrl, IResolvedUrl, IUrlResolver } from "@fluidframework/driver-definitions";
 import { ITokenProvider } from "@fluidframework/routerlicious-driver";
 
-export class InsecureRouterliciousUrlResolver implements IUrlResolver {
+export class SimpleRouterliciousUrlResolver implements IUrlResolver {
     constructor(
         private readonly tokenProvider: ITokenProvider,
         private readonly tenantId: string,

@@ -4,7 +4,7 @@ module.exports = {
     clean: [],
     test: ["^build"],
     lint: ["^build"],
-    "lint:fix": ["build"],
+    "lint:fix": ["^build"],
     publish: ["^build", "build", "test", "lint"],
   },
 };

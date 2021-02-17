@@ -1,13 +1,6 @@
-import { ITelemetryServiceConfig } from "@znewton/fluid-client-utils";
-
-export interface IFluidServiceConfig {
-    tenantId: string;
-    tenantSecret: string;
-    ordererUrl: string;
-    storageUrl: string;
-}
+import { ITelemetryServiceConfig, IInsecureFluidServiceConfig } from "@znewton/fluid-utils";
 
 export interface IAppConfig {
-    fluidService: IFluidServiceConfig;
+    fluidService: IInsecureFluidServiceConfig;
     telemetryService: ITelemetryServiceConfig;
 }

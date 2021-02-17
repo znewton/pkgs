@@ -1,5 +1,5 @@
 {
-  "name": "@znewton/fluid-server-utils",
+  "name": "@znewton/fluid-utils",
   "version": "0.0.2",
   "description": "Some fluid helpers",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/znewton/pkgs/issues"
   },
-  "homepage": "https://github.com/znewton/pkgs/packages/fluid-server-utils#readme",
+  "homepage": "https://github.com/znewton/pkgs/packages/fluid-utils#readme",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist *.tsbuildinfo",
@@ -36,9 +36,12 @@
   },
   "prettier": "@znewton/common/prettier-config.json",
   "dependencies": {
+    "@fluidframework/common-definitions": "^0.19.1",
+    "@fluidframework/container-definitions": "^0.34.1",
+    "@fluidframework/container-loader": "^0.34.1",
+    "@fluidframework/driver-definitions": "^0.34.1",
     "@fluidframework/protocol-definitions": "^0.1019.0",
     "@fluidframework/routerlicious-driver": "^0.34.1",
-    "@fluidframework/server-services-utils": "^0.1019.0",
     "json-stringify-safe": "^5.0.1"
   }
 }
