@@ -8,9 +8,9 @@ import {
     FluidTelemetryLogger,
     SimpleRouterliciousUrlResolver,
     ITelemetryServiceConfig,
+    IFluidClientConfig,
 } from "@znewton/fluid-utils";
-import { SimpleRouterliciousTokenProvider } from "./tokenProvider";
-import { IClientConfig } from "../../config";
+import { SimpleRouterliciousTokenProvider } from "../../utils";
 
 export const FluidAppContainerRuntimeFactory = new ContainerRuntimeFactoryWithDefaultDataStore(
     FluidAppView.getFactory(),
@@ -20,7 +20,7 @@ export const FluidAppContainerRuntimeFactory = new ContainerRuntimeFactoryWithDe
 export async function getContainer(
     documentId: string,
     createNew: boolean,
-    fluidServiceConfig: IClientConfig,
+    fluidServiceConfig: IFluidClientConfig,
     telemetryServiceConfig: ITelemetryServiceConfig
 ): Promise<Container> {
     const tokenProvider = new SimpleRouterliciousTokenProvider("/api/token");

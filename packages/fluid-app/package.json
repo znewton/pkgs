@@ -15,7 +15,6 @@
     },
     "homepage": "https://github.com/znewton/pkgs/packages/fluid-app#readme",
     "scripts": {
-        "build": "concurrently yarn:tsc yarn:webpack",
         "clean": "rimraf dist *.tsbuildinfo",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix",

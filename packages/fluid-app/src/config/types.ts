@@ -1,6 +1,6 @@
-import { ITelemetryServiceConfig, IInsecureFluidServiceConfig } from "@znewton/fluid-utils";
+import { ITelemetryServiceConfig, IFluidServiceConfig } from "@znewton/fluid-utils";
 
 export interface IAppConfig {
-    fluidService: IInsecureFluidServiceConfig;
+    fluidService: IFluidServiceConfig;
     telemetryService: ITelemetryServiceConfig;
 }

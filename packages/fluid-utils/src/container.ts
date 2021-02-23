@@ -3,13 +3,17 @@ import { Container, Loader } from "@fluidframework/container-loader";
 import { ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 import { IUrlResolver, IDocumentServiceFactory } from "@fluidframework/driver-definitions";
 
-export interface IFluidServiceConfig {
+export interface IFluidClientConfig {
     tenantId: string;
     ordererUrl: string;
     storageUrl: string;
 }
-export interface IInsecureFluidServiceConfig extends IFluidServiceConfig {
+
+export interface IFluidServiceConfig {
+    tenantId: string;
     tenantSecret: string;
+    ordererUrl: string;
+    storageUrl: string;
 }
 
 export async function getFluidContainer(

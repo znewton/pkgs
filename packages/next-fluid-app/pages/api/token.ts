@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateToken } from "@fluidframework/server-services-utils";
 import { ScopeType } from "@fluidframework/protocol-definitions";
+import { IFluidServiceConfig } from "@znewton/fluid-utils";
 import defaultServerConfig, { configs as serverConfigs } from "../../config/server.config";
-import { IServerConfig } from "../../config";
 
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     // decide what config to use
-    let config: IServerConfig = defaultServerConfig;
+    let config: IFluidServiceConfig = defaultServerConfig;
     const configParam = req.query.config as string;
     if (configParam && serverConfigs[configParam]) {
         config = serverConfigs[configParam];

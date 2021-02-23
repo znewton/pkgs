@@ -5,7 +5,7 @@ import { SharedString } from "@fluidframework/sequence";
 import React from "react";
 import ReactDOM from "react-dom";
 import { IFluidHandle } from "@fluidframework/core-interfaces";
-import { CollabArea } from "./collab-area";
+import { CollabArea } from "./collab-component";
 
 export class FluidAppView extends DataObject implements IFluidHTMLView {
     private readonly textKey = "textKey";
