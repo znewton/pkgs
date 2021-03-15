@@ -7,4 +7,5 @@ module.exports = {
     "lint:fix": ["^build"],
     publish: ["^build", "build", "test", "lint"],
   },
+  npmClient: "yarn"
 };
