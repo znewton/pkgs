@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/znewton/pkgs/issues"
   },
-  "homepage": "https://github.com/znewton/pkgs/packages/telemetry#readme",
+  "homepage": "https://github.com/znewton/pkgs/packages/telemetry-server#readme",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
@@ -24,6 +24,7 @@
     "test": "mocha --recursive dist/test -r make-promises-safe"
   },
   "dependencies": {
+    "@znewton/telemetry-loggers": "^0.0.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

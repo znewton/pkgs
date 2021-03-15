@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import config from "./config/config";
-import { MultiLogger } from "./loggers";
+import { MultiLogger } from "@znewton/telemetry-loggers";
 
 const create = async (): Promise<express.Application> => {
     const app = express();

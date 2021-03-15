@@ -25,6 +25,7 @@
     "@fluidframework/view-interfaces": "^0.36.0",
     "@next/bundle-analyzer": "^10.0.7",
     "@znewton/fluid-utils": "^0.0.2",
+    "@znewton/telemetry-loggers": "^0.0.2",
     "next": "10.0.7",
     "orderedmap": "^1.1.1",
     "prosemirror-example-setup": "^1.1.2",

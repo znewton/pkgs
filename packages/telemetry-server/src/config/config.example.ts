@@ -1,4 +1,10 @@
-import { ConsoleLogger, ILoggerSettings, IConsoleLoggerSettings, IMongoLoggerSettings, MongoLogger } from "../loggers";
+import {
+    ConsoleLogger,
+    ILoggerSettings,
+    IConsoleLoggerSettings,
+    IMongoLoggerSettings,
+    MongoLogger,
+} from "@znewton/telemetry-loggers";
 
 export default {
     loggers: [

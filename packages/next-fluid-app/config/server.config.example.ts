@@ -1,6 +1,13 @@
 import { IFluidServiceConfig } from "@znewton/fluid-utils";
+import {
+    ConsoleLogger,
+    IConsoleLoggerSettings,
+    ILoggerSettings,
+    IMongoLoggerSettings,
+    MongoLogger,
+} from "@znewton/telemetry-loggers";
 
-const configs: { [key: string]: IFluidServiceConfig } = {
+const serviceConfigs: { [key: string]: IFluidServiceConfig } = {
     local: {
         tenantId: "fluid",
         tenantSecret: "create-new-tenants-if-going-to-production",
@@ -9,4 +16,21 @@ const configs: { [key: string]: IFluidServiceConfig } = {
     },
 };
 
-export default configs.local;
+export const serviceConfig = serviceConfigs.local;
+
+export const telemetryConfig: { loggers: ILoggerSettings[] } = {
+    loggers: [
+        {
+            enabled: true,
+            name: ConsoleLogger.name,
+        } as IConsoleLoggerSettings,
+        {
+            enabled: true,
+            name: MongoLogger.name,
+            connectionString: "",
+            dbName: "",
+            collectionNamePrefix: "",
+            logSubsetField: "",
+        } as IMongoLoggerSettings,
+    ],
+};

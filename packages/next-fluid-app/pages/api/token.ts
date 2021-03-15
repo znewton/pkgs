@@ -1,29 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateToken } from "@fluidframework/server-services-utils";
 import { ScopeType } from "@fluidframework/protocol-definitions";
-import { IFluidServiceConfig } from "@znewton/fluid-utils";
-import defaultServerConfig, { configs as serverConfigs } from "../../config/server.config";
+import { serviceConfig } from "../../config/server.config";
 
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
-    // decide what config to use
-    let config: IFluidServiceConfig = defaultServerConfig;
-    const configParam = req.query.config as string;
-    if (configParam && serverConfigs[configParam]) {
-        config = serverConfigs[configParam];
-    }
-
     const tenantId = req.query.tenantId as string;
     const documentId = req.query.documentId as string;
     const scopes = req.query.scopes as ScopeType[];
     if (!tenantId || !documentId) {
-        res.status(400).send("Must provide tenantId and documentId");
-        return;
+        return res.status(400).send("Must provide tenantId and documentId");
     }
-    if (tenantId !== config.tenantId) {
-        res.status(400).send("Invalid tenantId");
-        return;
+    if (tenantId !== serviceConfig.tenantId) {
+        return res.status(400).send("Invalid tenantId");
     }
-    const token = generateToken(tenantId, documentId, config.tenantSecret, scopes || []);
+    const token = generateToken(tenantId, documentId, serviceConfig.tenantSecret, scopes || []);
     res.status(200).send(token);
 };
 

@@ -1,6 +1,6 @@
 import { IFluidClientConfig } from "@znewton/fluid-utils";
 
-export const configs: { [key: string]: IFluidClientConfig } = {
+export const clientConfigs: { [key: string]: IFluidClientConfig } = {
     local: {
         tenantId: "fluid",
         ordererUrl: "http://localhost:3003",
@@ -8,4 +8,4 @@ export const configs: { [key: string]: IFluidClientConfig } = {
     },
 };
 
-export default configs.local;
+export const clientConfig = clientConfigs.local;
