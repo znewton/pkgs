@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import { CollabTextareaStressApp } from "../components";
 
-const Home: React.FunctionComponent = () => (
+const Stress: React.FunctionComponent = () => (
     <div>
         <Head>
             <title>Next.js Fluid App — Textarea Stress</title>
@@ -13,4 +13,4 @@ const Home: React.FunctionComponent = () => (
     </div>
 );
 
-export default Home;
+export default Stress;

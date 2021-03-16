@@ -17,7 +17,7 @@ export class FluidAppView extends DataObject implements IFluidHTMLView {
     }
 
     public static get Name(): string {
-        return "@znewton/next-fluid-app";
+        return "@znewton/next-fluid-app_CollabTextarea";
     }
 
     private static readonly factory = new DataObjectFactory(
