@@ -1,4 +1,4 @@
-import { ITelemetryBaseEvent, ITelemetryBaseLogger } from "@fluidframework/common-definitions";
+import type { ITelemetryBaseEvent, ITelemetryBaseLogger } from "@fluidframework/common-definitions";
 import stringifySafe from "json-stringify-safe";
 
 export interface ITelemetryServiceConfig {

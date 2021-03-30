@@ -1,7 +1,7 @@
-import { IRuntimeFactory } from "@fluidframework/container-definitions";
+import type { IRuntimeFactory } from "@fluidframework/container-definitions";
 import { Container, Loader } from "@fluidframework/container-loader";
-import { ITelemetryBaseLogger } from "@fluidframework/common-definitions";
-import { IUrlResolver, IDocumentServiceFactory } from "@fluidframework/driver-definitions";
+import type { ITelemetryBaseLogger } from "@fluidframework/common-definitions";
+import type { IUrlResolver, IDocumentServiceFactory } from "@fluidframework/driver-definitions";
 
 export interface IFluidClientConfig {
     tenantId: string;

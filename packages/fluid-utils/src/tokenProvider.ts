@@ -1,4 +1,4 @@
-import { ITokenProvider, ITokenResponse } from "@fluidframework/routerlicious-driver";
+import type { ITokenProvider, ITokenResponse } from "@fluidframework/routerlicious-driver";
 
 export abstract class RouterliciousTokenProvider implements ITokenProvider {
     private readonly tokenCacheMap: Map<string, string> = new Map();

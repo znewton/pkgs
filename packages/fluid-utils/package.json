@@ -37,11 +37,11 @@
   "prettier": "@znewton/common/prettier-config.json",
   "dependencies": {
     "@fluidframework/common-definitions": "^0.19.1",
-    "@fluidframework/container-definitions": "^0.36.0",
-    "@fluidframework/container-loader": "^0.36.0",
-    "@fluidframework/driver-definitions": "^0.36.0",
-    "@fluidframework/protocol-definitions": "^0.1020.0",
-    "@fluidframework/routerlicious-driver": "^0.36.0",
+    "@fluidframework/container-definitions": "^0.37.0",
+    "@fluidframework/container-loader": "^0.37.0",
+    "@fluidframework/driver-definitions": "^0.37.0",
+    "@fluidframework/protocol-definitions": "^0.1022.0",
+    "@fluidframework/routerlicious-driver": "^0.37.0",
     "@znewton/telemetry-loggers": "^0.0.2",
     "json-stringify-safe": "^5.0.1"
   }

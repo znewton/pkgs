@@ -1,6 +1,6 @@
-import { IRequest } from "@fluidframework/core-interfaces";
-import { IFluidResolvedUrl, IResolvedUrl, IUrlResolver } from "@fluidframework/driver-definitions";
-import { ITokenProvider } from "@fluidframework/routerlicious-driver";
+import type { IRequest } from "@fluidframework/core-interfaces";
+import type { IFluidResolvedUrl, IResolvedUrl, IUrlResolver } from "@fluidframework/driver-definitions";
+import type { ITokenProvider } from "@fluidframework/routerlicious-driver";
 
 export class SimpleRouterliciousUrlResolver implements IUrlResolver {
     constructor(
